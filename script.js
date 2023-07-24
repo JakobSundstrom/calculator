@@ -13,4 +13,23 @@ const add = function (...args) {
   const divide = function (...args) {
     return args.reduce((acc, val) => acc / val);
   };
-  
+
+  const operate = function(a,b,operator){
+    if (operator === "+"){
+        return add(a,b);
+    };
+
+    if (operator === "-"){
+        return subtract(a,b);
+    };
+
+    if (operator === "*"){
+        return multiply(a,b);
+    };
+
+    if (operator === "/"){
+        return divide(a,b);
+    };
+   };
+
+console.log(operate(1,4,"/"));
