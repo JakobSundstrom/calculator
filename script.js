@@ -39,6 +39,11 @@ function appendToInput(value) {
     input.value += value;
 };
 
+function clearInput() {
+  var input = document.getElementById("result");
+  input.value = "";
+}
+
 function calculateResult() {
     const inputField = document.getElementById("result");
     const expression = inputField.value;
