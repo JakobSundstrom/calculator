@@ -45,33 +45,59 @@ function clearInput() {
 }
 
 function calculateResult() {
-    const inputField = document.getElementById("result");
-    const expression = inputField.value;
-  
-    // Regular expression to split the expression into numbers and operators
-    const tokens = expression.split(/(\+|\-|\*|\/)/).filter(token => token.trim() !== '');
-  
-    let result = parseFloat(tokens[0]); // Convert the first token to a number
-    let operator = null;
-  
-    for (let i = 1; i < tokens.length; i++) {
-      if (i % 2 === 1) {
-        operator = tokens[i];
-      } else {
-        const nextNumber = parseFloat(tokens[i]);
-  
-        // Handle multiplication and division before addition and subtraction
-        if (operator === "*" || operator === "/") {
-          result = operate(result, nextNumber, operator);
-        } else {
-          // If the next operator is + or -, we update the result and operator for the next iteration
-          result = operate(result, nextNumber, operator);
-        }
+  const inputField = document.getElementById("result");
+  const expression = inputField.value;
+
+  // Regular expression to split the expression into numbers and operators
+  const tokens = expression.split(/(\+|\-|\*|\/)/).filter(token => token.trim() !== '');
+
+  // Create two arrays to store numbers and operators separately
+  const numbers = [];
+  const operators = [];
+
+  console.log("Tokens:", tokens);
+
+  for (const token of tokens) {
+    if (!isNaN(parseFloat(token))) {
+      numbers.push(parseFloat(token));
+      console.log("Number Stack:", numbers);
+    } else {
+      while (
+        operators.length > 0 &&
+        precedence(token) <= precedence(operators[operators.length - 1])
+      ) {
+        applyOperation(numbers, operators);
+        console.log("Number Stack:", numbers);
       }
+      operators.push(token);
+      console.log("Operator Stack:", operators);
     }
-  
-    inputField.value = result;
-    console.log(result);
   }
-  
-  
+
+  while (operators.length > 0) {
+    applyOperation(numbers, operators);
+    console.log("Number Stack:", numbers);
+  }
+
+  const result = numbers[0];
+  inputField.value = result;
+  console.log("Result:", result);
+}
+
+function precedence(operator) {
+  if (operator === '+' || operator === '-') {
+    return 1;
+  } else if (operator === '*' || operator === '/') {
+    return 2;
+  } else {
+    return 0;
+  }
+}
+
+function applyOperation(numbers, operators) {
+  const operator = operators.pop();
+  const b = numbers.pop();
+  const a = numbers.pop();
+  const result = operate(a, b, operator);
+  numbers.push(result);
+}
