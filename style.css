@@ -1,0 +1,75 @@
+.container{
+width: 300px;
+height: 420px;
+margin: auto;
+background-color: grey;
+}
+
+input{
+    width: 280px;
+    height: 50px;
+}
+
+.displayWindow{
+margin: auto;
+padding: 2px;
+width: 290px;
+height: 60px;
+margin: auto;
+background-color: green;
+}
+
+.innerBox{
+    margin: auto;
+    width: 290px;
+    height: 350px;
+    background-color: red;
+    display: flex;
+
+}
+
+.tools{
+    width: 220px;
+    height: 70px;
+    background-color: blue;
+
+}
+
+.tools button{
+    width: 70px;
+    height: 70px;
+}
+
+.numbers{
+    width: 220px;
+    height: 300px;
+    background-color: purple;
+}
+
+.numbers button{
+    width: 70px;
+    height: 70px;
+}
+
+
+.innerBoxLeft{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    display: flex;
+}
+
+.innerBoxRight {
+    width: 70px;
+    height: 350px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+  
+
+.operators button{
+    width: 70px;
+    height: 70px;
+    background-color: orange;
+}
