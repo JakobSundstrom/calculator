@@ -24,8 +24,7 @@ input{
     display: flex;
     align-items: center;
   }
-  
-  /* Align the text to the right within the input element */
+
   #result {
     width: 100%;
     height: 40%;
@@ -42,13 +41,11 @@ input{
     margin: auto;
     width: 290px;
     height: 350px;
-    background-color: red;
     display: flex;
 
 }
 
 .tools{
-    background-color: blue;
     display: flex;
 }
 
@@ -61,12 +58,11 @@ input{
 .numbers {
     width: 220px;
     height: 300px;
-    background-color: purple;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */ /* Add some spacing between buttons */
   }
   
-  /* Style the zero button separately to make it twice the width */
+  
   .numbers button[value="0"] {
     grid-column: span 2; /* Make the zero button span 2 columns */
   }
@@ -87,7 +83,6 @@ input{
 .innerBoxRight {
     width: 75px; /* Adjust the width as needed */
     height: 300px;
-    background-color: purple;
     display: grid;
     grid-gap: 5px;
   }
@@ -114,3 +109,34 @@ input{
   button.active {
     transform: scale(1.1);
   }
+
+/* Add the viewport meta tag */
+
+/* ... Other styles ... */
+
+/* Add a media query for smaller screens (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  /* ... Other styles for smaller screens ... */
+
+  /* Adjust font size and input height */
+  .displayWindow input {
+    font-size: 24px;
+    height: 80px;
+  }
+
+  /* Increase button size and add spacing */
+  .tools button,
+  .numbers button,
+  .operators button {
+    width: 80%;
+    height: 50px;
+    margin: 10px;
+    font-size: 24px;
+  }
+
+  .operators button {
+    width: 80%;
+    margin: 10px;
+    height: 50px;
+  }
+}
