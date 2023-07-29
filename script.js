@@ -34,25 +34,58 @@ function calculateResult() {
     resultValue *= inputValue;
   } else if (currentOperator === '/') {
     resultValue /= inputValue;
-  } 
-  else if (currentOperator === '%') {
-    resultValue = inputValue/100;
   } else {
     // If no operator is set, update the resultValue to the current input value
     resultValue = inputValue;
   }
 
-  inputField.value = resultValue; // Display the updated result in the input field
+  const roundedResult = roundToMaxDecimalPlaces(resultValue, 10); // Round the result to fit the input box
+  inputField.value = roundedResult; // Display the updated result in the input field
 
   // After the result is calculated and displayed, reset the operator to allow continuous calculations
   currentOperator = '';
   waitingForOperand = false;
 }
 
+function calculatePercentage() {
+  const inputField = document.getElementById('result');
+  const inputValue = parseFloat(inputField.value) || 0; // Convert the current input value to a number or use 0 if it's not a number
+
+  // Calculate the percentage operation (divide by 100) and display the result as a decimal
+  const result = inputValue *0.01;
+  const roundedResult = roundToMaxDecimalPlaces(result, 10); // Round the result to fit the input box
+  inputField.value = roundedResult; // Display the updated result in the input field
+}
+
+// Function to round a number to the maximum decimal places that fit the input box width
+function roundToMaxDecimalPlaces(number, maxDecimalPlaces) {
+  const scaleFactor = Math.pow(10, maxDecimalPlaces);
+  const roundedNumber = Math.round(number * scaleFactor) / scaleFactor;
+  const roundedString = roundedNumber.toString();
+
+  // Remove trailing zeros from the decimal part, if any
+  const decimalIndex = roundedString.indexOf('.');
+  if (decimalIndex !== -1) {
+    const integerPart = roundedString.slice(0, decimalIndex);
+    let decimalPart = roundedString.slice(decimalIndex + 1);
+
+    // Remove trailing zeros from the decimal part
+    decimalPart = decimalPart.replace(/0+$/, '');
+
+    // If the decimal part is empty after removing zeros, display the integer part only
+    return decimalPart.length > 0 ? `${integerPart}.${decimalPart}` : integerPart;
+  }
+
+  return roundedString; // If no decimal part, return the original rounded number as a string
+}
+
+
+
 function clearInput() {
   const input = document.getElementById('result');
   input.value = ''; // Clear the input field
-  resultValue = 0; // Reset the stored result value
+  roundedResult = 0;
+  resultValue = 0;
   currentOperator = ''; // Reset the current operator
   waitingForOperand = false; // Reset the waitingForOperand flag
 }
