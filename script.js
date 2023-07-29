@@ -39,7 +39,7 @@ function calculateResult() {
     resultValue = inputValue;
   }
 
-  const roundedResult = roundToMaxDecimalPlaces(resultValue, 10); // Round the result to fit the input box
+  const roundedResult = roundToMaxDecimalPlaces(resultValue, 5); // Round the result to fit the input box
   inputField.value = roundedResult; // Display the updated result in the input field
 
   // After the result is calculated and displayed, reset the operator to allow continuous calculations
@@ -114,6 +114,8 @@ function handleKeyPress(event) {
   } else if (keyValue === 'c' || keyValue === 'C') {
     // If the key is the "C" or "c" key, clear the input
     input.value = '';
+  } else if (keyValue === '%'){
+    calculatePercentage();
   }
 }
 
