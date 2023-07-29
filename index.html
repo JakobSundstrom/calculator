@@ -14,36 +14,36 @@
         <div  class="innerBox">
             <div class="innerBoxLeft">
                 <div class="tools">
-                    <button onclick="clearInput()">AC</button>
+                    <button value="c" onclick="clearInput()">AC</button>
                     <button onclick="toggleSign()">+/-</button>
-                    <button onclick="appendToInput('%')">%</button>
+                    <button value="%" onclick="appendToInput('%')">%</button>
                 </div>
                 <div class="numbers">
-                    <button onclick="appendToInput(1)">1</button>
-                    <button onclick="appendToInput(2)">2</button>
-                    <button onclick="appendToInput(3)">3</button>
+                    <button value="1" onclick="appendToInput(1)">1</button>
+                    <button value="2" onclick="appendToInput(2)">2</button>
+                    <button value="3" onclick="appendToInput(3)">3</button>
                 
-                    <button onclick="appendToInput(4)">4</button>
-                    <button onclick="appendToInput(5)">5</button>
-                    <button onclick="appendToInput(6)">6</button>
+                    <button value="4" onclick="appendToInput(4)">4</button>
+                    <button value="5" onclick="appendToInput(5)">5</button>
+                    <button value="6" onclick="appendToInput(6)">6</button>
                 
-                    <button onclick="appendToInput(7)">7</button>
-                    <button onclick="appendToInput(8)">8</button>
-                    <button onclick="appendToInput(9)">9</button>
+                    <button value="7" onclick="appendToInput(7)">7</button>
+                    <button value="8" onclick="appendToInput(8)">8</button>
+                    <button value="9" onclick="appendToInput(9)">9</button>
                    
-                    <button onclick="appendToInput(0)" value="0">0</button>
+                    <button value="0" onclick="appendToInput(0)" value="0">0</button>
 
-                    <button onclick="appendToInput('.')">,</button>
+                    <button value="," onclick="appendToInput('.')">,</button>
                 </div>
             </div>
     
             <div class="innerBoxRight">
                 <div class="operators">
-                    <button onclick="appendToInput('/')">/</button>
-                    <button onclick="appendToInput('*')">*</button>
-                    <button onclick="appendToInput('-')">-</button>
-                    <button onclick="appendToInput('+')">+</button>
-                    <button onclick="calculateResult()">=</button>
+                    <button value="/" onclick="appendToInput('/')">/</button>
+                    <button value="*" onclick="appendToInput('*')">*</button>
+                    <button value="-" onclick="appendToInput('-')">-</button>
+                    <button value="+" onclick="appendToInput('+')">+</button>
+                    <button value="Enter" onclick="calculateResult()">=</button>
                 </div>
             </div>
         </div>

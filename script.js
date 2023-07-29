@@ -93,3 +93,23 @@ function toggleSign() {
   const newValue = -currentValue;
   input.value = newValue.toString();
 }
+
+// Function to handle keydown event
+function handleKeyDown(event) {
+  const keyElement = document.querySelector(`button[value="${event.key}"]`);
+  if (keyElement) {
+    keyElement.classList.add('active');
+  }
+}
+
+// Function to handle keyup event
+function handleKeyUp(event) {
+  const keyElement = document.querySelector(`button[value="${event.key}"]`);
+  if (keyElement) {
+    keyElement.classList.remove('active');
+  }
+}
+
+// Add event listeners for keydown and keyup events on the document
+document.addEventListener('keydown', handleKeyDown);
+document.addEventListener('keyup', handleKeyUp);
